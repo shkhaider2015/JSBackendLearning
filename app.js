@@ -18,6 +18,9 @@ app.get('/api/chars', (req, res) => {
 app.get('/api/cars', (req, res) => {
     res.send(['BMD', 'Carrolla', 'Caltus', 'Suzuki', 'MiniBus', 'Datson'])
 })
+app.get('/api/medicens', (req, res) => {
+    res.send(['Panadole', 'Disprol', 'Febrol', 'Ponistan', 'Mafinec', 'Zopan'])
+})
 
 // to set environment variable use set PORT=5000 
 const port = process.env.PORT || 3000;
