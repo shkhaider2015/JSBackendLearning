@@ -5,6 +5,8 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
+require("./routes")
+
 const courses = [
     { id : 1, name : 'course1'},
     { id : 2, name : 'course2'},
@@ -84,6 +86,10 @@ app.post('/api/courses', (req, res) => {
 
 // to set environment variable use set PORT=5000 
 const port = process.env.PORT || 3000;
+
+module.exports = {
+    ap : () => app
+}
 
 app.listen(port, () => console.log(`Listining To Port ${port}...`) )
 
