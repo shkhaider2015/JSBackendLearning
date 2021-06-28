@@ -1,14 +1,24 @@
-const appp = require("./app")
+const express = require("express");
+const router = express.Router();
+const rout1 = require("./routes/route1");
 
-console.log(appp)
-appp.ap.get('/routes/r1', (req, res) => {
-    res.send("This is from another file")
+// middleware that is specific to this router
+router.use(function timeLog (req, res, next) {
+  console.log('Time: ', Date.now())
+  next()
 })
+router.use('/users', rout1);
+// define the home page route
+router.get('/', function (req, res) {
+  res.send('Inner Birds home page')
+})
+// define the about route
+router.get('/inner', function (req, res) {
+  res.send('Inner About birds')
+})
+// define user route
+// router.get('/users', function (req, res) {
+//   res.send('Inner users route About birds')
+// })
 
-appp.ap.get('/routes/18', (req, res) => {
-    res.send("This is from another file")
-})
-
-appp.ap.get('/routes/19', (req, res) => {
-    res.send("This is from another file")
-})
+module.exports = router
