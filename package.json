@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/shkhaider2015/JSBackendLearning#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "joi": "^13.1.0"
+    "joi": "^13.1.0",
+    "pg": "^8.6.0"
   }
 }

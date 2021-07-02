@@ -1,6 +1,19 @@
 const express = require("express");
+const { Pool } = require("pg")
 const router = express.Router();
 const rout1 = require("./routes/route1");
+
+
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'postgres',
+  password: 'Progressive0314',
+  port: 5432,
+  max: 20,
+})
+
+
 
 // middleware that is specific to this router
 router.use(function timeLog (req, res, next) {
@@ -9,11 +22,15 @@ router.use(function timeLog (req, res, next) {
 })
 router.use('/users', rout1);
 // define the home page route
-router.get('/', function (req, res) {
+router.get('/', async (req, res) => {
+  const result = await pool.query("SELECT * FROM Employee")
+  console.table(result.rows);
   res.send('Inner Birds home page')
 })
 // define the about route
-router.get('/inner', function (req, res) {
+router.get('/inner', async (req, res) => {
+  const result = await pool.query("SELECT * FROM Employee WHERE id=2")
+  console.table(result.rows);
   res.send('Inner About birds')
 })
 // define user route
