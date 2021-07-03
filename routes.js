@@ -3,7 +3,7 @@ const { Pool } = require("pg")
 const router = express.Router();
 const rout1 = require("./routes/route1");
 
-
+// its pool
 const pool = new Pool({
   user: process.env.PGUSER,
   host: process.env.PGHOST,
